@@ -3,24 +3,52 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pokémon App</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Pokémon</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-
   <header>
-    <img src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png" alt="Pokémon Logo" id="logo">
-    <h1>Pokémon App</h1>
+    <h1>Pokémon</h1>
   </header>
 
-  <form id="formulario">
-    <input type="text" id="search" placeholder="Busca un Pokémon por nombre..." />
-    <button type="submit">Buscar</button>
-  </form>
+  <section class="buscadores">
+    <input type="text" id="busqueda-nombre" placeholder="Nombre...">
+    <select id="busqueda-tipo">
+      <option value="">Tipo</option>
+      <option value="all">Todos</option>
+      <option value="normal">Normal</option>
+      <option value="fighting">Lucha</option>
+      <option value="flying">Volador</option>
+      <option value="poison">Veneno</option>
+      <option value="ground">Tierra</option>
+      <option value="rock">Roca</option>
+      <option value="bug">Bicho</option>
+      <option value="ghost">Fantasma</option>
+      <option value="steel">Acero</option>
+      <option value="fire">Fuego</option>
+      <option value="water">Agua</option>
+      <option value="grass">Planta</option>
+      <option value="electric">Eléctrico</option>
+      <option value="psychic">Psíquico</option>
+      <option value="ice">Hielo</option>
+      <option value="dragon">Dragón</option>
+      <option value="dark">Siniestro</option>
+      <option value="fairy">Hada</option>
+    </select>
+    <input type="number" id="peso-min" placeholder="Peso mín (kg)">
+    <input type="number" id="peso-max" placeholder="Peso máx (kg)">
+    <input type="number" id="altura-min" placeholder="Altura mín (m)">
+    <input type="number" id="altura-max" placeholder="Altura máx (m)">
+    <button id="filtrar">Filtrar</button>
+  </section>
 
-  <div id="pokemon-container"></div>
-  <div id="detalle-pokemon"></div>
-<button id="volver" style="display: none;">Volver al inicio</button>
+  <section id="pokemon-container"></section>
+  <div class="paginacion">
+    <button id="anterior">Anterior</button>
+    <span id="pagina-actual">1</span>
+    <button id="siguiente">Siguiente</button>
+  </div>
 
   <script src="script.js"></script>
 </body>
