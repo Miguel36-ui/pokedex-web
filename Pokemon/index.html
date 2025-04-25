@@ -3,15 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pokémon</title>
+  <title>Pokédex</title>
+
+  <!-- Estilos -->
   <link rel="stylesheet" href="style.css"/>
+  <!-- Fuente secundaria para el header y sonido -->
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  
+  <!-- Fuente PokemonSolid desde local (asegúrate de que esté en la carpeta /fonts) -->
+  <style>
+    @font-face {
+      font-family: 'PokemonSolid';
+      src: url('fonts/PokemonSolidNormal.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    body {
+      font-family: 'Ortem MN', sans-serif;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Encabezado -->
   <header>
     <h1>Pokémon</h1>
   </header>
 
+  <!-- Reproductor de audio -->
+  <audio id="music" loop>
+    <source src="Pokémon Center.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
+  <div id="soundIcon" onclick="toggleMusic()" title="Activar / Pausar música">🔇</div>
+  <div id="soundControl">
+    <div id="volumeIcon" title="Controlar volumen">🔊</div>
+    <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5">
+  </div>
+  <div id="volumeLevel">
+    <div id="volumeFill"></div>
+  </div>  
+  <!-- Filtros -->
   <section class="buscadores">
     <input type="text" id="busqueda-nombre" placeholder="Nombre...">
     <select id="busqueda-tipo">
@@ -43,13 +76,30 @@
     <button id="filtrar">Filtrar</button>
   </section>
 
+  <!-- Contenedor de pokémon -->
   <section id="pokemon-container"></section>
+
+  <!-- Paginación -->
   <div class="paginacion">
     <button id="anterior">Anterior</button>
     <span id="pagina-actual">1</span>
     <button id="siguiente">Siguiente</button>
   </div>
 
+  <!-- JS principal -->
   <script src="script.js"></script>
+  <script>
+    function toggleMusic() {
+      const music = document.getElementById("music");
+      const icon = document.getElementById("soundIcon");
+      if (music.paused) {
+        music.play();
+        icon.textContent = "🔊";
+      } else {
+        music.pause();
+        icon.textContent = "🔇";
+      }
+    }
+  </script>
 </body>
 </html>
