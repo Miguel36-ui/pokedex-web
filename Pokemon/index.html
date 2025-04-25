@@ -8,9 +8,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
+
   <header>
     <h1>Pokémon</h1>
   </header>
+
+  <!-- Control de sonido -->
+  <audio id="music" loop>
+    <source src="Pocket Monsters OP01 - Aim to Be a Pokémon Masterめざせポケモンマスター(Pre-Porygon  Remastered w Subs).mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
+  <div id="soundIcon" onclick="toggleMusic()" title="Activar / Pausar música">🔇</div>
 
   <section class="buscadores">
     <input type="text" id="busqueda-nombre" placeholder="Nombre...">
@@ -44,6 +52,7 @@
   </section>
 
   <section id="pokemon-container"></section>
+
   <div class="paginacion">
     <button id="anterior">Anterior</button>
     <span id="pagina-actual">1</span>
@@ -53,3 +62,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+

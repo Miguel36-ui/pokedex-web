@@ -187,3 +187,17 @@ tipoSelect.addEventListener("change", () => {
   paginaActual = 1;
   mostrarPagina();
 });
+
+const music = document.getElementById('music');
+const icon = document.getElementById('soundIcon');
+
+function toggleMusic() {
+  if (music.paused) {
+    music.play();
+    icon.textContent = "🔊"; // Sonando
+  } else {
+    music.pause();
+    icon.textContent = "🔇"; // Silenciado
+  }
+}
+
