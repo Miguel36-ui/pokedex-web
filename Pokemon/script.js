@@ -1,7 +1,7 @@
 let todosLosPokemones = [];
 let pokemonesFiltrados = [];
 let paginaActual = 1;
-const porPagina = 20;
+const porPagina = 50;
 let tarjetaAbierta = null;
 
 // Elementos del DOM
