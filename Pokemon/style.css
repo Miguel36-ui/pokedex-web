@@ -181,4 +181,23 @@ header {
   background-color: #f7b900;
   transform: scale(1.1) rotate(-5deg);
 }
+#volumeLevel {
+  width: 150px;
+  height: 16px;
+  background-color: #2a75bb; /* azul pokébola */
+  border: 3px solid #ffcb05; /* amarillo Pikachu */
+  border-radius: 12px;
+  margin: 10px auto;
+  overflow: hidden;
+  box-shadow: inset 0 0 5px #000;
+  position: relative;
+}
+
+#volumeFill {
+  height: 100%;
+  width: 50%; /* ajustable según el volumen */
+  background: linear-gradient(to right, #ffcb05, #f7b900);
+  transition: width 0.2s ease;
+  border-radius: 12px 0 0 12px;
+}
 

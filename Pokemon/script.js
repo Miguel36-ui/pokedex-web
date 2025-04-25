@@ -176,6 +176,13 @@ tipoSelect.addEventListener("change", () => {
   paginaActual = 1;
   mostrarPagina();
 });
+const volumeSlider = document.getElementById("volumeSlider");
+const volumeFill = document.getElementById("volumeFill");
+
+volumeSlider.addEventListener("input", () => {
+  music.volume = volumeSlider.value;
+  volumeFill.style.width = (volumeSlider.value * 100) + "%";
+});
 
 
 

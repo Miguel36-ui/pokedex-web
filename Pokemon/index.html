@@ -10,7 +10,7 @@
   <!-- Fuente secundaria para el header y sonido -->
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   
-  <!-- Fuente Ortem desde local (asegúrate de que esté en la carpeta /fonts) -->
+  <!-- Fuente PokemonSolid desde local (asegúrate de que esté en la carpeta /fonts) -->
   <style>
     @font-face {
       font-family: 'PokemonSolid';
@@ -37,7 +37,13 @@
     Tu navegador no soporta audio.
   </audio>
   <div id="soundIcon" onclick="toggleMusic()" title="Activar / Pausar música">🔇</div>
-
+  <div id="soundControl">
+    <div id="volumeIcon" title="Controlar volumen">🔊</div>
+    <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5">
+  </div>
+  <div id="volumeLevel">
+    <div id="volumeFill"></div>
+  </div>  
   <!-- Filtros -->
   <section class="buscadores">
     <input type="text" id="busqueda-nombre" placeholder="Nombre...">
