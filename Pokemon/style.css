@@ -1,0 +1,174 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: url('https://wallpapers.com/images/featured/imagenes-pokemon-hd-fazqcs1tmwwte1ap.jpg') no-repeat center center fixed;
+  background-size: cover;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+header {
+  background-color: rgba(255, 65, 77, 0.9);
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 1.5em;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.buscadores {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+}
+
+.buscadores input,
+.buscadores select,
+.buscadores button {
+  padding: 8px;
+  font-size: 0.9em;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+}
+
+.buscadores button {
+  background-color: #ffcb05;
+  color: #2a75bb;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.buscadores button:hover {
+  background-color: #f7b900;
+}
+
+#pokemon-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: aparecer 0.4s ease;
+}
+
+.card img {
+  width: 100px;
+  animation: rebotar 1s infinite alternate;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rebotar {
+  from { transform: translateY(0); }
+  to { transform: translateY(-10px); }
+}
+
+.card.detalle {
+  animation: despliegue 0.3s ease forwards;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding-top: 10px;
+}
+
+@keyframes despliegue {
+  from { opacity: 0; max-height: 0; }
+  to { opacity: 1; max-height: 100px; }
+}
+
+.card h3, .card p {
+  margin: 5px 0;
+  font-size: 0.9em;
+}
+
+/* Colores suaves por tipo */
+.tipo-fire { background-color: #fcd5b5; }
+.tipo-water { background-color: #cce4f6; }
+.tipo-grass { background-color: #d5f5d5; }
+.tipo-electric { background-color: #fff9cc; }
+.tipo-psychic { background-color: #f9d2e6; }
+.tipo-normal { background-color: #f0f0f0; }
+.tipo-fighting { background-color: #e8c7c7; }
+.tipo-flying { background-color: #e0e8f9; }
+.tipo-poison { background-color: #e9d5f7; }
+.tipo-ground { background-color: #f4e0c1; }
+.tipo-rock { background-color: #e6dbc5; }
+.tipo-bug { background-color: #e2f7d4; }
+.tipo-ghost { background-color: #dcd6f7; }
+.tipo-steel { background-color: #dbe5ea; }
+.tipo-ice { background-color: #dbf3f9; }
+.tipo-dragon { background-color: #d6ccf2; }
+.tipo-dark { background-color: #d3c5b7; }
+.tipo-fairy { background-color: #fce4ec; }
+
+.paginacion {
+  text-align: center;
+  margin: 20px;
+}
+
+.paginacion button {
+  padding: 10px 15px;
+  margin: 0 10px;
+  font-size: 1em;
+  border-radius: 5px;
+  border: none;
+  background-color: #ffcb05;
+  color: #2a75bb;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.paginacion button:hover {
+  background-color: #f7b900;
+}
+
+#soundIcon {
+  font-size: 60px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s;
+}
+
+#soundIcon:hover {
+  transform: scale(1.1);
+}
+#soundIcon {
+  font-size: 32px;
+  cursor: pointer;
+  user-select: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: #ffcb05;
+  color: #2a75bb;
+  padding: 10px 12px;
+  border: 3px solid #2a75bb;
+  border-radius: 8px;
+  font-family: 'Press Start 2P', cursive;
+  box-shadow: 0 4px 0 #2a75bb;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+#soundIcon:hover {
+  background-color: #f7b900;
+  transform: scale(1.1) rotate(-5deg);
+}
