@@ -1,5 +1,12 @@
+@font-face {
+  font-family: 'Ortem MN';
+  src: url('fonts/OrtemMN.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Ortem MN', sans-serif; /* Usamos la fuente personalizada para todo el cuerpo */
   background: url('https://wallpapers.com/images/featured/imagenes-pokemon-hd-fazqcs1tmwwte1ap.jpg') no-repeat center center fixed;
   background-size: cover;
   text-align: center;
@@ -14,7 +21,7 @@ header {
   text-align: center;
   padding: 20px 0;
   font-size: 1.5em;
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Press Start 2P', cursive; /* Mantén la fuente para el header */
 }
 
 .buscadores {
@@ -65,6 +72,7 @@ header {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   position: relative;
   animation: aparecer 0.4s ease;
+  font-family: 'Ortem MN', sans-serif; /* Aplicamos la fuente Ortem MN a las cartas */
 }
 
 .card img {
@@ -150,6 +158,7 @@ header {
 #soundIcon:hover {
   transform: scale(1.1);
 }
+
 #soundIcon {
   font-size: 32px;
   cursor: pointer;
