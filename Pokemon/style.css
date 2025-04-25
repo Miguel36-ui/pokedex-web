@@ -1,17 +1,12 @@
-<<<<<<< HEAD
 @font-face {
-  font-family: 'Ortem MN';
-  src: url('fonts/OrtemMN.woff') format('woff');
+  font-family: 'PokemonSolid';
+  src: url('fonts/PokemonSolidNormal.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 body {
   font-family: 'Ortem MN', sans-serif; /* Usamos la fuente personalizada para todo el cuerpo */
-=======
-body {
-  font-family: 'Segoe UI', sans-serif;
->>>>>>> 35c16d050705e52a1e4f3b1984b7801ef0d5c51f
   background: url('https://wallpapers.com/images/featured/imagenes-pokemon-hd-fazqcs1tmwwte1ap.jpg') no-repeat center center fixed;
   background-size: cover;
   text-align: center;
@@ -26,11 +21,7 @@ header {
   text-align: center;
   padding: 20px 0;
   font-size: 1.5em;
-<<<<<<< HEAD
   font-family: 'Press Start 2P', cursive; /* Mantén la fuente para el header */
-=======
-  font-family: 'Press Start 2P', cursive;
->>>>>>> 35c16d050705e52a1e4f3b1984b7801ef0d5c51f
 }
 
 .buscadores {
@@ -81,10 +72,7 @@ header {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   position: relative;
   animation: aparecer 0.4s ease;
-<<<<<<< HEAD
-  font-family: 'Ortem MN', sans-serif; /* Aplicamos la fuente Ortem MN a las cartas */
-=======
->>>>>>> 35c16d050705e52a1e4f3b1984b7801ef0d5c51f
+  font-family: 'PokemonSolid', sans-serif; /* Aplicamos la fuente Ortem MN a las cartas */
 }
 
 .card img {
@@ -170,10 +158,7 @@ header {
 #soundIcon:hover {
   transform: scale(1.1);
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> 35c16d050705e52a1e4f3b1984b7801ef0d5c51f
 #soundIcon {
   font-size: 32px;
   cursor: pointer;
@@ -196,3 +181,4 @@ header {
   background-color: #f7b900;
   transform: scale(1.1) rotate(-5deg);
 }
+

@@ -1,17 +1,33 @@
+let todosLosPokemones = [];
+let pokemonesFiltrados = [];
+let paginaActual = 1;
+const porPagina = 20;
+let tarjetaAbierta = null;
+
+// Elementos del DOM
 const container = document.getElementById("pokemon-container");
-const tipoSelect = document.getElementById("busqueda-tipo");
 const inputNombre = document.getElementById("busqueda-nombre");
+const tipoSelect = document.getElementById("busqueda-tipo");
 const pesoMin = document.getElementById("peso-min");
 const pesoMax = document.getElementById("peso-max");
 const alturaMin = document.getElementById("altura-min");
 const alturaMax = document.getElementById("altura-max");
 const btnFiltrar = document.getElementById("filtrar");
 
-let paginaActual = 1;
-const porPagina = 50;
-let todosLosPokemones = [];
-let pokemonesFiltrados = [];
+const music = document.getElementById('music');
+const icon = document.getElementById('soundIcon');
 
+function toggleMusic() {
+  if (music.paused) {
+    music.play();
+    icon.textContent = "🔊";  // Icono de sonido activado
+  } else {
+    music.pause();
+    icon.textContent = "🔇";  // Icono de sonido desactivado
+  }
+}
+
+// --- Navegación ---
 document.getElementById("siguiente").addEventListener("click", () => {
   if (paginaActual * porPagina < pokemonesFiltrados.length) {
     paginaActual++;
@@ -33,12 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const promesas = data.results.map(p => fetch(p.url).then(r => r.json()));
       Promise.all(promesas).then(pokemones => {
         todosLosPokemones = pokemones;
+        pokemonesFiltrados = pokemones; // 👈 esto es importante
         mostrarPagina();
       });
     });
 });
-
-let tarjetaAbierta = null;
 
 function mostrarPagina() {
   container.innerHTML = "";
@@ -90,54 +105,28 @@ function cargarDetalle(nombre, contenedor) {
 
 function traducirTipo(tipo) {
   const traduccionesTipos = {
-    fire: "Fuego",
-    water: "Agua",
-    grass: "Planta",
-    electric: "Eléctrico",
-    psychic: "Psíquico",
-    normal: "Normal",
-    fighting: "Lucha",
-    flying: "Volador",
-    poison: "Veneno",
-    ground: "Tierra",
-    rock: "Roca",
-    bug: "Bicho",
-    ghost: "Fantasma",
-    steel: "Acero",
-    ice: "Hielo",
-    dragon: "Dragón",
-    dark: "Siniestro",
-    fairy: "Hada"
+    fire: "Fuego", water: "Agua", grass: "Planta", electric: "Eléctrico",
+    psychic: "Psíquico", normal: "Normal", fighting: "Lucha", flying: "Volador",
+    poison: "Veneno", ground: "Tierra", rock: "Roca", bug: "Bicho",
+    ghost: "Fantasma", steel: "Acero", ice: "Hielo", dragon: "Dragón",
+    dark: "Siniestro", fairy: "Hada"
   };
-
   return traduccionesTipos[tipo] || tipo;
 }
 
 function traducirHabilidad(habilidad) {
   const traduccionesHabilidades = {
-    "overgrow": "Sobrecrecimiento",
-    "blaze": "Llama",
-    "torrent": "Torrente",
-    "shield-dust": "Polvo Escudo",
-    "run-away": "Huir",
-    "keen-eye": "Ojo Clavo",
-    "chlorophyll": "Clorofila",
-    "pickup": "Recogida",
-    "intimidate": "Intimidación",
-    "adaptability": "Adaptabilidad",
-    "hydration": "Hidratación",
-    "insomnia": "Insomnio",
-    "synchronize": "Sincronizar",
-    "rain-dish": "Lluvia",
-    "ice-body": "Cuerpo de Hielo",
-    "suction-cups": "Ventosas",
-    "serene-grace": "Gracia Serena"
-    // Agrega más habilidades según sea necesario
+    "overgrow": "Sobrecrecimiento", "blaze": "Llama", "torrent": "Torrente",
+    "shield-dust": "Polvo Escudo", "run-away": "Huir", "keen-eye": "Ojo Clavo",
+    "chlorophyll": "Clorofila", "pickup": "Recogida", "intimidate": "Intimidación",
+    "adaptability": "Adaptabilidad", "hydration": "Hidratación", "insomnia": "Insomnio",
+    "synchronize": "Sincronizar", "rain-dish": "Lluvia", "ice-body": "Cuerpo de Hielo",
+    "suction-cups": "Ventosas", "serene-grace": "Gracia Serena"
   };
-
   return traduccionesHabilidades[habilidad] || habilidad;
 }
 
+// --- Filtro por características ---
 btnFiltrar.addEventListener("click", () => {
   const tipo = tipoSelect.value;
   const pesoMinimo = parseFloat(pesoMin.value);
@@ -145,22 +134,21 @@ btnFiltrar.addEventListener("click", () => {
   const alturaMinima = parseFloat(alturaMin.value);
   const alturaMaxima = parseFloat(alturaMax.value);
 
-  // Filtrar los pokemones por tipo y otras opciones
   const filtrados = todosLosPokemones.filter(p => {
     const peso = p.weight / 10;
     const altura = p.height / 10;
-    const coincideTipo = tipo === "all" || tipo === "" || p.types[0].type.name === tipo; // Aseguramos que solo sea el tipo seleccionado
+    const coincideTipo = tipo === "all" || tipo === "" || p.types[0].type.name === tipo;
     const dentroPeso = (!pesoMinimo || peso >= pesoMinimo) && (!pesoMaximo || peso <= pesoMaximo);
     const dentroAltura = (!alturaMinima || altura >= alturaMinima) && (!alturaMaxima || altura <= alturaMaxima);
     return coincideTipo && dentroPeso && dentroAltura;
   });
 
   pokemonesFiltrados = filtrados;
-  container.innerHTML = "";
   paginaActual = 1;
   mostrarPagina();
 });
 
+// --- Filtro por nombre ---
 inputNombre.addEventListener("input", () => {
   const nombre = inputNombre.value.toLowerCase().trim();
   if (nombre) {
@@ -177,27 +165,17 @@ inputNombre.addEventListener("input", () => {
   }
 });
 
+// --- Filtro por tipo ---
 tipoSelect.addEventListener("change", () => {
   const tipo = tipoSelect.value;
   if (tipo === "" || tipo === "all") {
     pokemonesFiltrados = todosLosPokemones;
   } else {
-    pokemonesFiltrados = todosLosPokemones.filter(p => p.types[0].type.name === tipo); // Filtro más estricto por tipo
+    pokemonesFiltrados = todosLosPokemones.filter(p => p.types[0].type.name === tipo);
   }
   paginaActual = 1;
   mostrarPagina();
 });
 
-const music = document.getElementById('music');
-const icon = document.getElementById('soundIcon');
 
-function toggleMusic() {
-  if (music.paused) {
-    music.play();
-    icon.textContent = "🔊"; // Sonando
-  } else {
-    music.pause();
-    icon.textContent = "🔇"; // Silenciado
-  }
-}
 
